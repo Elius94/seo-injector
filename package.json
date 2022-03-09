@@ -1,0 +1,21 @@
+{
+    "name": "js-seo-ingector",
+    "version": "1.0.0",
+    "description": "A Javascript command to automatically modify the main html file (like index.html) to add the provided SEO meta tags and more. Designed for Create React App.",
+    "main": "./src/index.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "bin": "./src/index.js",
+    "keywords": [
+        "create-react-app",
+        "react",
+        "seo",
+        "google",
+        "index",
+        "search",
+        "optimization"
+    ],
+    "author": "Elia Lazzari",
+    "license": "MIT"
+}
