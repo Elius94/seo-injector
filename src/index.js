@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { GetHtmlSEOString } from './Seo';
-import { promises as fs } from 'fs';
+const GetHtmlSEOString = require('./Seo');
+const { readFile, writeFile } = require('fs').promises;
 
-const version = '1.0.0';
+const version = '1.0.1';
 const help = process.argv.includes('--help');
 const verbose = process.argv.includes('--verbose');
 const waitkey = process.argv.includes('--waitkey');
@@ -11,7 +11,7 @@ const basePath = !process.argv.includes('--base-path') ? process.cwd() : process
 const buildDir = !process.argv.includes('--build-dir') ? 'build' : process.argv[process.argv.indexOf('--build-dir') + 1];
 const fileName = !process.argv.includes('--file') ? 'index.html' : process.argv[process.argv.indexOf('--file') + 1];
 const configFile = !process.argv.includes('--config') ? 'seo.json' : process.argv[process.argv.indexOf('--config') + 1];
-const example = !process.argv.includes('--example');
+const example = process.argv.includes('--example');
 
 const seoExample = {
     title: "Example Title",
@@ -38,6 +38,13 @@ const seoExample = {
     manifest: undefined
 };
 
+/**
+ * 
+ * @returns {string} - The structure of the example config file
+ * 
+ * @description Prints the structure of the example config file
+ * 
+ */
 const seoProps = {
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
@@ -72,7 +79,7 @@ const seoProps = {
 };
 
 /**
- * @description 
+ * @description Executes the SEO html injection
  */
 const ingectSEOData = async() => {
     if (process.argv.length > 2) {
@@ -81,7 +88,7 @@ const ingectSEOData = async() => {
             if (example) {
                 config = seoExample;
             } else {
-                config = JSON.parse(await fs.readFile(`${basePath}/${configFile}`, 'utf8'));
+                config = JSON.parse(await readFile(`${basePath}/${configFile}`, 'utf8'));
             }
             // Check if the config file is valid using the seoProps object
             Object.keys(seoProps).forEach(key => {
@@ -106,10 +113,10 @@ const ingectSEOData = async() => {
                 }
             });
             // Inject the SEO data into the html file
-            const html = await fs.readFile(`${basePath}/${buildDir}/${fileName}`, 'utf8');
-            const seoString = GetHtmlSEOString(config);
+            const html = await readFile(`${basePath}/${buildDir}/${fileName}`, 'utf8');
+            const seoString = await GetHtmlSEOString(config);
             const newHtml = html.replace(/<\/head>/, `${seoString}</head>`);
-            await fs.writeFile(`${basePath}/${buildDir}/${fileName}`, newHtml);
+            await writeFile(`${basePath}/${buildDir}/${fileName}`, newHtml);
             log(`SEO data injected into ${fileName}`);
         } catch (error) {
             console.error(error);

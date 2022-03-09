@@ -1,0 +1,24 @@
+{
+    "title": "Example Title",
+    "description": "Example Description",
+    "keywords": "Example Keywords",
+    "author": "Example Author",
+    "openGraph": {
+        "url": "https://example.com",
+        "title": "Example Title",
+        "description": "Example Description",
+        "image": "https://example.com/image.jpg",
+        "site_name": "Example Site Name",
+        "type": "website",
+        "locale": "it_IT"
+    },
+    "twitter": {
+        "image": "https://example.com/image.jpg",
+        "url": "https://example.com",
+        "card": "summary_large_image",
+        "title": "Example Title",
+        "description": "Example Description"
+    },
+    "favicon": null,
+    "manifest": null
+}
