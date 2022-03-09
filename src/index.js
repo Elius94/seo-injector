@@ -82,48 +82,43 @@ const seoProps = {
  * @description Executes the SEO html injection
  */
 const ingectSEOData = async() => {
-    if (process.argv.length > 2) {
-        try {
-            let config = {};
-            if (example) {
-                config = seoExample;
-            } else {
-                config = JSON.parse(await readFile(`${basePath}/${configFile}`, 'utf8'));
-            }
-            // Check if the config file is valid using the seoProps object
-            Object.keys(seoProps).forEach(key => {
-                if (seoProps[key].required && !config[key]) {
-                    throw new Error(`Missing required property: ${key}`);
-                }
-                if (config[key]) {
-                    if (seoProps[key].type === 'string') {
-                        if (typeof config[key] !== 'string') {
-                            throw new Error(`Property ${key} is not a string`);
-                        }
-                    } else if (seoProps[key].type === 'object') {
-                        if (typeof config[key] !== 'object') {
-                            throw new Error(`Property ${key} is not an object`);
-                        }
-                        Object.keys(seoProps[key].props).forEach(prop => {
-                            if (seoProps[key].props[prop].required && !config[key][prop]) {
-                                throw new Error(`Missing required property: ${key}.${prop}`);
-                            }
-                        });
-                    }
-                }
-            });
-            // Inject the SEO data into the html file
-            const html = await readFile(`${basePath}/${buildDir}/${fileName}`, 'utf8');
-            const seoString = await GetHtmlSEOString(config);
-            const newHtml = html.replace(/<\/head>/, `${seoString}</head>`);
-            await writeFile(`${basePath}/${buildDir}/${fileName}`, newHtml);
-            log(`SEO data injected into ${fileName}`);
-        } catch (error) {
-            console.error(error);
-            process.exit(1);
+    try {
+        let config = {};
+        if (example) {
+            config = seoExample;
+        } else {
+            config = JSON.parse(await readFile(`${basePath}/${configFile}`, 'utf8'));
         }
-    } else {
-        console.error('Missing required arguments');
+        // Check if the config file is valid using the seoProps object
+        Object.keys(seoProps).forEach(key => {
+            if (seoProps[key].required && !config[key]) {
+                throw new Error(`Missing required property: ${key}`);
+            }
+            if (config[key]) {
+                if (seoProps[key].type === 'string') {
+                    if (typeof config[key] !== 'string') {
+                        throw new Error(`Property ${key} is not a string`);
+                    }
+                } else if (seoProps[key].type === 'object') {
+                    if (typeof config[key] !== 'object') {
+                        throw new Error(`Property ${key} is not an object`);
+                    }
+                    Object.keys(seoProps[key].props).forEach(prop => {
+                        if (seoProps[key].props[prop].required && !config[key][prop]) {
+                            throw new Error(`Missing required property: ${key}.${prop}`);
+                        }
+                    });
+                }
+            }
+        });
+        // Inject the SEO data into the html file
+        const html = await readFile(`${basePath}/${buildDir}/${fileName}`, 'utf8');
+        const seoString = await GetHtmlSEOString(config);
+        const newHtml = html.replace(/<\/head>/, `${seoString}</head>`);
+        await writeFile(`${basePath}/${buildDir}/${fileName}`, newHtml);
+        log(`SEO data injected into ${fileName}`);
+    } catch (error) {
+        console.error(error);
         process.exit(1);
     }
 }
