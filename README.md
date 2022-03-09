@@ -37,18 +37,13 @@ to this:
 ```json
 "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build; npx js-seo-ingector",
+    "build": "react-scripts build && npx js-seo-ingector",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
 },
 ```
 
-Then we can run the build script:
-```bash
-npn run build
-```
-
-and the seo tags will be injected into the index.html file.
+And then we have to create a seo.json file in the same directory as the package.json file.
 
 Example json file (seo.json):
 
@@ -78,3 +73,11 @@ Example json file (seo.json):
     "manifest": null
 }
 ```
+
+Then we can run the build script:
+```bash
+npn run build
+```
+
+and the seo tags will be injected into the index.html file.
+
