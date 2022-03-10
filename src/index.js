@@ -11,6 +11,7 @@ const basePath = !process.argv.includes('--base-path') ? process.cwd() : process
 const buildDir = !process.argv.includes('--build-dir') ? 'build' : process.argv[process.argv.indexOf('--build-dir') + 1];
 const fileName = !process.argv.includes('--file') ? 'index.html' : process.argv[process.argv.indexOf('--file') + 1];
 const configFile = !process.argv.includes('--config') ? 'seo.json' : process.argv[process.argv.indexOf('--config') + 1];
+const pretty = process.argv.includes('--pretty'); // Pretty print the html tags
 const example = process.argv.includes('--example');
 
 const seoExample = {
@@ -76,6 +77,35 @@ const seoProps = {
     },
     favicon: { type: 'string', required: false },
     manifest: { type: 'string', required: false },
+    icons: {
+        type: 'array',
+        required: false,
+        content: {
+            type: 'object',
+            required: false,
+            props: {
+                src: { type: 'string', required: true },
+                sizes: { type: 'string', required: true },
+                type: { type: 'string', required: true },
+            }
+        }
+    },
+    custom: {
+        type: 'array',
+        required: false,
+        content: {
+            type: 'object',
+            required: false,
+            props: {
+                tag: { type: 'string', required: true },
+                children: { type: 'string', required: false },
+                attrs: {
+                    type: 'any',
+                    required: false,
+                }
+            }
+        }
+    }
 };
 
 /**
@@ -108,12 +138,29 @@ const ingectSEOData = async() => {
                             throw new Error(`Missing required property: ${key}.${prop}`);
                         }
                     });
+                } else if (seoProps[key].type === 'array') {
+                    if (!Array.isArray(config[key])) {
+                        throw new Error(`Property ${key} is not an array`);
+                    }
+                    if (seoProps[key].content) {
+                        config[key].forEach(item => {
+                            Object.keys(seoProps[key].content.props).forEach(prop => {
+                                if (seoProps[key].content.props[prop].required && !item[prop]) {
+                                    throw new Error(`Missing required property: ${key}.${prop}`);
+                                }
+                            });
+                        });
+                    }
+                } else if (seoProps[key].type === 'any') {
+                    // Do nothing
+                } else {
+                    throw new Error(`Property ${key} has an invalid type`);
                 }
             }
         });
         // Inject the SEO data into the html file
         const html = await readFile(`${basePath}/${buildDir}/${fileName}`, 'utf8');
-        const seoString = await GetHtmlSEOString(config);
+        const seoString = await GetHtmlSEOString(config, pretty);
         const newHtml = html.replace(/<\/head>/, `${seoString}</head>`);
         await writeFile(`${basePath}/${buildDir}/${fileName}`, newHtml);
         log(`SEO data injected into ${fileName}`);
@@ -152,6 +199,7 @@ function printHelp() {
         `  --build-dir            The build directory (defaults to build)\n` +
         `  --file                 The file to inject the SEO data into (defaults to index.html)\n` +
         `  --config               The config file to use (defaults to seo.json)\n` +
+        `  --pretty               Pretty print the output\n` +
         `  --example              Use the example config file\n` +
         `\n\n` +
         `Example config file (seo.json):\n` +
