@@ -3,6 +3,8 @@
 # js-seo-ingector
 A Javascript command to automatically modify the main html file (like index.html) to add the provided SEO meta tags and more. Designed for Create React App.
 
+ [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=elius94&repo=js-seo-ingector&theme=github_dark&show_icons=true)](https://github.com/Elius94/js-seo-ingector) [![https://nodei.co/npm/js-seo-ingector.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/js-seo-ingector.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/js-seo-ingector)
+
 ## Usage
 ```bash
 npx js-seo-ingector
@@ -10,7 +12,13 @@ npx js-seo-ingector
 
 ## Demostration
 
+Example with --pretty:
 
+Before:
+![image](https://user-images.githubusercontent.com/14907987/157652223-1de86b32-212a-4457-9ee3-5a54cd3ddc8a.png)
+
+After:
+![image](https://user-images.githubusercontent.com/14907987/157652468-5217c94e-2825-4945-8e2d-7425d50b3116.png)
 
 ## Options
  - --help                 Print this help message
