@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/seo-injector.svg)](https://npmjs.com/package/seo-injector) [![npm](https://img.shields.io/npm/dt/seo-injector)](https://npmjs.com/package/seo-injector) ![npm bundle size](https://img.shields.io/bundlephobia/min/seo-injector) ![GitHub](https://img.shields.io/github/license/elius94/seo-injector)
+[![npm version](https://badge.fury.io/js/seo-injector.svg)](https://npmjs.com/package/seo-injector) [![npm](https://img.shields.io/npm/dt/seo-injector)](https://npmjs.com/package/seo-injector) ![npm bundle size](https://img.shields.io/bundlephobia/min/seo-injector) ![GitHub](https://img.shields.io/github/license/elius94/seo-injector) [![Node.js Package](https://github.com/Elius94/js-seo-ingector/actions/workflows/release-package.yml/badge.svg)](https://github.com/Elius94/js-seo-ingector/actions/workflows/release-package.yml)
 
 # seo-injector
 A Javascript command to automatically modify the main html file (like index.html) to add the provided SEO meta tags and more. Designed for Create React App.
