@@ -1,14 +1,14 @@
-[![npm version](https://badge.fury.io/js/js-seo-ingector.svg)](https://npmjs.com/package/js-seo-ingector) [![npm](https://img.shields.io/npm/dt/js-seo-ingector)](https://npmjs.com/package/js-seo-ingector) ![npm bundle size](https://img.shields.io/bundlephobia/min/js-seo-ingector) ![GitHub](https://img.shields.io/github/license/elius94/js-seo-ingector)
+[![npm version](https://badge.fury.io/js/seo-injector.svg)](https://npmjs.com/package/seo-injector) [![npm](https://img.shields.io/npm/dt/seo-injector)](https://npmjs.com/package/seo-injector) ![npm bundle size](https://img.shields.io/bundlephobia/min/seo-injector) ![GitHub](https://img.shields.io/github/license/elius94/seo-injector)
 
-# js-seo-ingector
+# seo-injector
 A Javascript command to automatically modify the main html file (like index.html) to add the provided SEO meta tags and more. Designed for Create React App.
 For example you can use it to add on the build time the following meta tags: title, description, open graph, twitter, icons and more.
 
- [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=elius94&repo=js-seo-ingector&theme=github_dark&show_icons=true)](https://github.com/Elius94/js-seo-ingector) [![https://nodei.co/npm/js-seo-ingector.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/js-seo-ingector.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/js-seo-ingector)
+ [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=elius94&repo=seo-injector&theme=github_dark&show_icons=true)](https://github.com/Elius94/seo-injector) [![https://nodei.co/npm/seo-injector.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/seo-injector.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/seo-injector)
 
 ## Usage
 ```bash
-npx js-seo-ingector
+npx seo-injector
 ```
 
 ## Demostration
@@ -51,7 +51,7 @@ to this:
 ```json
 "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && npx js-seo-ingector",
+    "build": "react-scripts build && npx seo-injector",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
 },

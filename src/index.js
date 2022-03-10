@@ -189,7 +189,7 @@ function printHelp() {
     return `\n\nJS SEO Ingector - v${version}\n\n` +
         `A Javascript command to automatically modify the main html file (like index.html) to add the provided SEO meta tags and more. Designed for Create React App.\n` +
         'It does not replace the existing meta tags, but adds them to the head of the html file.\n\n' +
-        `Usage: npx js-seo-ingector [options]\n\n` +
+        `Usage: npx seo-injector [options]\n\n` +
         `Options:\n` +
         `  --help                 Print this help message\n` +
         `  --version              Print the version of this tool\n` +
@@ -228,8 +228,8 @@ function printHelp() {
         `  "manifest": "https://example.com/manifest.json"\n` +
         `}\n\n` +
         `Examples:\n` +
-        `  npx js-seo-ingector --verbose\n` +
-        `  npx js-seo-ingector --base-path=./my-project --build-dir=build --file=index.html --config=seo.json\n` +
+        `  npx seo-injector --verbose\n` +
+        `  npx seo-injector --base-path=./my-project --build-dir=build --file=index.html --config=seo.json\n` +
         `\n\n`;
 }
 
