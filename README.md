@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/js-seo-ingector.svg)](https://npmjs.com/package/js-seo-ingector) [![npm](https://img.shields.io/npm/dt/js-seo-ingector)](https://npmjs.com/package/js-seo-ingector) ![npm bundle size](https://img.shields.io/bundlephobia/min/js-seo-ingector) ![GitHub](https://img.shields.io/github/license/elius94/js-seo-ingector)
+[![npm version](https://badge.fury.io/js/js-seo-ingector.svg)](https://npmjs.com/package/js-seo-ingector) [![npm](https://img.shields.io/npm/dt/js-seo-ingector)](https://npmjs.com/package/js-seo-ingector) ![npm bundle size](https://img.shields.io/bundlephobia/min/js-seo-ingector) ![GitHub](https://img.shields.io/github/license/elius94/js-seo-ingector) [![Node.js Package](https://github.com/Elius94/js-seo-ingector/actions/workflows/release-package.yml/badge.svg)](https://github.com/Elius94/js-seo-ingector/actions/workflows/release-package.yml)
 
 # js-seo-ingector
 A Javascript command to automatically modify the main html file (like index.html) to add the provided SEO meta tags and more. Designed for Create React App.
