@@ -237,7 +237,7 @@ const GetHtmlSEOString = async (props, pretty) => {
                 htmlString += `${indent}<${tag.tag}>${tag._children}</${tag.tag}>${newLine}`;
             }
         } else if (tag.attrs && !tag._children) {
-            htmlString += `${indent}<${tag.tag} ${Object.keys(tag.attrs).map(key => `${key}="${tag.attrs[key]}"`).join(' ')} />${newLine}`;
+            htmlString += `${indent}<${tag.tag} ${Object.keys(tag.attrs).map(key => `${key}="${tag.attrs[key]}"`).join(' ')}>${newLine}`;
         } else {
             htmlString += `${indent}<${tag.tag} />${newLine}`;
         }

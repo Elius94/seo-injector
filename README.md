@@ -2,6 +2,7 @@
 
 # js-seo-ingector
 A Javascript command to automatically modify the main html file (like index.html) to add the provided SEO meta tags and more. Designed for Create React App.
+For example you can use it to add on the build time the following meta tags: title, description, open graph, twitter, icons and more.
 
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=elius94&repo=js-seo-ingector&theme=github_dark&show_icons=true)](https://github.com/Elius94/js-seo-ingector) [![https://nodei.co/npm/js-seo-ingector.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/js-seo-ingector.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/js-seo-ingector)
 
